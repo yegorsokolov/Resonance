@@ -1,13 +1,6 @@
-from app.app import app
-from app.db import init_db
-import webbrowser
+from dotenv import load_dotenv
+load_dotenv()
+from resonance.web import create_app
 
-if __name__ == "__main__":
-    # Ensure the SQLite file & schema exist
-    init_db()
-
-    # Pop open the browser
-    webbrowser.open("http://127.0.0.1:8888")
-
-    # Run Flask (no debug so it won't spawn a second process)
-    app.run(port=8888, debug=False)
+if __name__ == '__main__':
+    create_app().run(host='127.0.0.1', port=8888, debug=False, threaded=True)

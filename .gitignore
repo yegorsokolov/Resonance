@@ -1,5 +1,9 @@
 .env
-test_db.py
-cache/
-venv/
 .venv/
+__pycache__/
+*.pyc
+*.db
+*.sqlite*
+.cache*
+instance/
+coverage/
