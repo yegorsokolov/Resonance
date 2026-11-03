@@ -1,6 +1,6 @@
 # Resonance
 
-**Take your music with you.** Resonance evolves SpotifyFunctions into a personal, self-hosted music library transfer app with official Spotify and YouTube OAuth connections, candidate matching, manual review, private playlist creation, and portable history archives.
+**Take your music with you.** Resonance is a personal, self-hosted music library transfer app with official Spotify and YouTube OAuth connections, candidate matching, manual review, private playlist creation, and portable history archives.
 
 ## What works
 
@@ -20,8 +20,8 @@ Spotify saved albums transfer as a collection of tracks, not native album saves.
 Requires Python 3.11+.
 
 ```sh
-git clone https://github.com/yegorsokolov/SpotifyFunctions.git
-cd SpotifyFunctions
+git clone https://github.com/yegorsokolov/Resonance.git
+cd Resonance
 python -m venv .venv
 # Windows PowerShell
 .venv\Scripts\Activate.ps1
@@ -68,7 +68,7 @@ node --check static/resonance.js
 
 The mocked automated suite exercises matching/version penalties, pagination, current Spotify write paths, owner isolation, CSRF/state rejection, token privacy, Spotify AI exclusion, review and transfer, archive export, replay rejection, and ambiguous-write handling. It does not prove live OAuth/provider compatibility. Real account transfers require configured credentials, provider approval and quota. Browser preview availability depends on the runtime.
 
-Architecture: `resonance/providers.py` holds official API adapters; `engine.py` validates archives, scores candidates, and stores job snapshots; `web.py` implements the local OAuth, planning and execution lifecycle. `templates/index.html` and `static/resonance.*` implement the responsive, keyboard-accessible interface. `run.py` is the entry point. Original SpotifyFunctions utility modules remain in `app/` as legacy reference and are not started; their old scheduler/cache behavior is not part of Resonance.
+Architecture: `resonance/providers.py` holds official API adapters; `engine.py` validates archives, scores candidates, and stores job snapshots; `web.py` implements the local OAuth, planning and execution lifecycle. `templates/index.html` and `static/resonance.*` implement the responsive, keyboard-accessible interface. `run.py` is the entry point. Legacy Spotify utility modules remain in `app/` as legacy reference and are not started; their old scheduler/cache behavior is not part of Resonance.
 
 ## Delivery tranches
 
@@ -76,4 +76,4 @@ Architecture: `resonance/providers.py` holds official API adapters; `engine.py` 
 2. Resonance account connection, selection, review and transfer interface.
 3. Automated checks, setup guide, privacy/limitations and CI.
 
-This repository contains the product name **Resonance**. Repository renaming depends on GitHub repository administration access; GitHub redirects old URLs after a rename.
+Repository: [yegorsokolov/Resonance](https://github.com/yegorsokolov/Resonance). If you have an existing checkout, update its remote:\n\n```sh\ngit remote set-url origin https://github.com/yegorsokolov/Resonance.git\n```
