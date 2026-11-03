@@ -9,7 +9,7 @@ async function api(path, body) {
   return data;
 }
 function notice(text='') { $('notice').textContent = text; }
-function action(id, fn) { $(id).addEventListener('click', async () => { const button=$(id); button.disabled=true; notice(); try { await fn(); } catch(e) {notice(e.message);} finally {button.disabled=false;} }); }
+function action(id, fn) { $(id).addEventListener('click', async () => { const button=$(id); button.disabled=true; notice(); try { await fn(); } catch(e) {notice(e.message);} finally {button.disabled=id==='execute' ? !job || job.status!=='review' : false;} }); }
 async function status() {
   const data=await api('/api/status');
   for(const [p,s] of Object.entries(data.providers)) {

@@ -72,6 +72,11 @@ class Store:
         self.path = path
         with self.connect() as db:
             db.execute('CREATE TABLE IF NOT EXISTS jobs (id TEXT PRIMARY KEY, owner TEXT, data TEXT)')
+            for jid, raw in db.execute('SELECT id, data FROM jobs').fetchall():
+                job = json.loads(raw)
+                if job.get('status') in ('matching', 'transferring'):
+                    job.update(status='needs_attention', error='Server restarted during this operation. Inspect the report and destination before starting another transfer.')
+                    db.execute('UPDATE jobs SET data=? WHERE id=?', (json.dumps(job), jid))
 
     @contextmanager
     def connect(self):
